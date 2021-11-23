@@ -1,0 +1,57 @@
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@vue/reactivity": "^3.2.20",
+    "ag-grid-community": "^26.1.0",
+    "ag-grid-vue": "^26.1.0",
+    "axios": "^0.21.4",
+    "core-js": "^3.6.5",
+    "jquery": "^3.6.0",
+    "postscribe": "^2.0.8",
+    "vue": "^2.6.11",
+    "vue-axios": "^3.3.7",
+    "vue-content-loader": "^0.2.3",
+    "vue-property-decorator": "^8.0.0",
+    "vue-route-middleware": "^1.0.7",
+    "vue-router": "^3.5.2",
+    "webpack": "^4.44.2"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "sass": "^1.43.4",
+    "sass-loader": "^10.2.0",
+    "vue-template-compiler": "^2.6.11",
+    "webpack-dev-server": "^4.4.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "ENV": "development",
+  "BASE_URL": "http://localhost:8080",
+  "IMAGE_BASE_URL":"http://192.168.29.215:8080/"
+}

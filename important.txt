@@ -1,0 +1,97 @@
+//tutorials Link:
+https://www.youtube.com/watch?v=70hnBm1UWyU&list=PL8p2I9GklV45qwTH-mdzllUuFRJO-euYn&index=5
+
+
+2. 
+https://www.py4u.net/discuss/287627
+https://vue-view.com/how-to-load-an-external-script-in-vue-component/
+
+https://bytutorial.com/blogs/vuejs/how-to-combine-multiple-path-route-files-in-vuejs
+
+
+http://vuejs-templates.github.io/webpack/static.html
+
+https://medium.com/js-dojo/how-to-solve-vue-js-prod-build-assets-relative-path-problem-71f91138dd79
+=> 
+CRUD Example
+https://jasonwatmore.com/post/2019/03/08/vuejs-role-based-authorization-tutorial-with-example
+
+https://www.codegrepper.com/code-examples/javascript/global+variable+vuejs
+
+Red Hat.
+https://developers.redhat.com/blog/2021/03/04/making-environment-variables-accessible-in-front-end-containers#create_a_skeleton_application
+
+
+https://remotestack.io/vue-axios-upload-image-with-multipart-form-data-tutorial/
+
+
+Sumit Url: 
+https://www.codegrepper.com/code-examples/javascript/vuejs+axios+post+form-data
+
+
+Submit Form Url:
+https://laracasts.com/discuss/channels/code-review/ajax-form-with-file-upload
+
+https://stackoverflow.com/questions/57285984/failed-to-construct-formdata
+
+Login and registration.
+https://jasonwatmore.com/post/2018/07/14/vue-vuex-user-registration-and-login-tutorial-example
+
+YT Link: https://www.youtube.com/watch?v=uqpM7WVTKI4
+
+
+DataTable: 
+https://vuejsexamples.com/a-vue-js-server-side-component-to-create-dynamic-tables/
+https://madewithvuejs.com/blog/best-vue-js-datatables#
+https://github.com/jamesdordoy/laravel-vue-datatable
+https://www.ag-grid.com/vue-data-grid/getting-started/?utm_source=ag-grid-readme&utm_medium=repository&utm_campaign=github
+https://www.npmjs.com/search?q=keywords:datatable
+
+=> Group Of Tables:
+https://www.vuescript.com/data-grid-table-dynamic/
+1.https://github.com/xaksis/vue-good-table
+
+https://github.com/tochoromero/vuejs-smart-table
+https://tochoromero.github.io/vuejs-smart-table/sorting/#table-header
+
+Datatables Real: 
+https://vuejsexamples.com/vue-jquery-datatables-net-wrapper-component/
+https://github.com/niiknow/vue-datatables-net
+https://github.com/niiknow/vue-datatables-net/blob/master/example/app.vue
+https://vuejs-datatable.patrickstephan.me/usage/ajax
+
+https://madewithvuejs.com/blog/best-vue-js-datatables
+https://www.ag-grid.com/vue-data-grid/getting-started/
+
+
+1. Install Vetur Extension in VS code
+=>For install Vue js.
+    1. Install Vue CLI.
+    
+=>Run Vue js server.  
+    1. npm run serve
+   http://192.168.29.215:8080/
+
+=>Install vue routes package.
+ 
+  npm install --save vue-router
+
+vue-cli-service build --mode development
+
+
+/**Remove packages****/
+npm uninstall -g <name> --save 
+1. npm uninstall <name> --save
+npm uninstall ag-grid-vue3 --save
+npm uninstall vue-datasource --save
+
+Important
+npm i webpack@4.44.2
+
+
+
+
+
+
+
+
