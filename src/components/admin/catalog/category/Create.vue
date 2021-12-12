@@ -41,9 +41,22 @@
                     <form
                       id="employeeForm"
                       role="form"
-                      :action="empployeeCreateFormAction"
+                      :action="actionUrl.categoryCreateUrl"
                       v-on:submit.prevent="submitForm"
                     >
+                       <div class="row">
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <label for="email">Status</label>
+                            <select  v-model="category.parent_category" 
+                                  class="form-control" 
+                                  id="parent_category"
+                                  name="parent_category">
+
+                            </select>
+                          </div>
+                        </div>
+                      </div>
                       <div class="row">
                         <div class="col-sm-12">
                           <div class="form-group">
@@ -54,7 +67,7 @@
                               class="form-control"
                               id="name"
                               placeholder="Category Name"
-                              v-model="employee.first_name"
+                              v-model="category.name"
                             />
                           </div>
                         </div>
@@ -69,7 +82,7 @@
                               class="form-control"
                               id="description"
                               placeholder="Description"
-                              v-model="employee.last_name">
+                              v-model="category.description">
                             </textarea>
                           </div>
                         </div>
@@ -78,7 +91,7 @@
                         <div class="col-sm-6">
                           <div class="form-group">
                             <label for="email">Status</label>
-                            <select  class="form-control" name="status">
+                            <select  v-model="category.status" class="form-control" name="status">
                               <option value="A">Active</option>
                               <option value="P">Save in draft</option>
                             </select>
@@ -93,7 +106,7 @@
                               id="priority"
                               class="form-control"
                               placeholder="Priority"
-                              v-model="employee.mobile"
+                              v-model="category.priority"
                             />
                           </div>
                         </div>
@@ -124,13 +137,16 @@ export default {
   props: {},
   data() {
     return {
-      empployeeCreateFormAction: `${this.$serverUrl}employee/create`,
-      employee: {
-        first_name: "",
-        last_name: "",
-        email: "",
-        mobile: "",
-        password: "",
+      actionUrl:{
+        categoryCreateUrl: `${this.$serverUrl}api/categoty/create`,
+        parentCategoryUrl: `${this.$serverUrl}api/categoty/parent-category`,
+      },
+      category: {
+        parent_category:"",
+        name: "",
+        description: "",
+        status: "A",
+        priority:1,
       },
     };
   },
@@ -138,10 +154,16 @@ export default {
     submitForm: function() {
       //var FormDataRes =  new FormData(document.getElementById('employeeForm'))
       this.$axios
-        .post(this.empployeeCreateFormAction, this.employee)
+        .post(this.actionUrl.categoryCreateUrl, this.category, {
+            headers: this.$helper.authHeader()
+        })
         .then((response) => {
-          if (response.data.status == 200) {
-            this.$router.push("list");
+          console.log(response)
+          console.log(response.status)
+          if (response.status == 200) {
+            this.getParentCategory();
+            //this.router.push({ name: 'user', params: { userId: '123' } })
+            //this.router.push({ name: 'admin.catalog.category'})
           } else {
             console.log(response);
             console.log(response.data);
@@ -155,15 +177,41 @@ export default {
           console.log("loading false");
         });
     },
+    getParentCategory:function(){
+      this.$axios
+        .post(this.actionUrl.parentCategoryUrl,{}, {
+            headers: this.$helper.authHeader()
+        })
+        .then((response) => {
+          console.log(response.data.response)
+          console.log(response.data.status)
+          if (response.data.status == 200) {
+            document.getElementById('parent_category').innerHTML = response.data.response;
+          } else {
+            console.log(response);
+            console.log(response.data);
+            console.log(response.data.msg);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+        .finally(() => {
+          console.log("loading false");
+        });
+    }
   },
   beforeMount() {
     // this.empployeeCreateFormAction = `${this.$appName}`;
   },
   beforeCreate: function() {
     //console.log(this.empployeeCreateFormAction); Note Working because this funation will be intialize after mounter
-
+    console.log();
     console.log(this.$appName);
     console.log(this.$serverUrl);
+  },
+  created() {
+    this.getParentCategory();
   },
 };
 </script>

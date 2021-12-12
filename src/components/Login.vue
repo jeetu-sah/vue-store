@@ -88,6 +88,7 @@ export default {
           if(response.data.status == 200){
             localStorage.setItem('usertoken', response.data.token);
             this.user.email = this.user.password = '';
+              //this.$router.go("/admin/dashboard");
               this.$router.push("/admin/dashboard");
           }else{
             console.log("Something went wrong, please try again")

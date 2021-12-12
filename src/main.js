@@ -6,6 +6,12 @@ import Config from "./config.json";
 import { ContentLoader } from "vue-content-loader";
 import VueRouteMiddleware from "vue-route-middleware";
 
+import "./admin-webu/dist/css/adminlte.min.css";
+import "./admin-webu/plugins/font-awesome/css/font-awesome.min.css";
+import "./admin-webu/plugins/jquery/jquery.min.js";
+import "./admin-webu/plugins/bootstrap/js/bootstrap.bundle.min.js";
+import "./admin-webu/dist/js/adminlte.js";
+
 import GuestMiddleware from "./middleware/guest";
 
 Vue.component("ContentLoader", ContentLoader);

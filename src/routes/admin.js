@@ -13,18 +13,21 @@ import ProductList from '../components/admin/catalog/product/List';
 import Login from "../components/Login.vue";
 
 
-import "../admin-webu/dist/css/adminlte.min.css";
-import "../admin-webu/plugins/font-awesome/css/font-awesome.min.css";
 
-import "../admin-webu/plugins/jquery/jquery.min.js";
-import "../admin-webu/plugins/bootstrap/js/bootstrap.bundle.min.js";
-import "../admin-webu/dist/js/adminlte.js";
+// import "../admin-webu/dist/css/adminlte.min.css";
+// import "../admin-webu/plugins/font-awesome/css/font-awesome.min.css";
+
+// import "../admin-webu/plugins/jquery/jquery.min.js";
+// import "../admin-webu/plugins/bootstrap/js/bootstrap.bundle.min.js";
+// import "../admin-webu/dist/js/adminlte.js";
+
+
 
 import axios from "axios";
 import AuthMiddleware from "../middleware/auth";
 import GuestMiddleware from "../middleware/guest";
 import Helper from "../helper/helper";
-
+import API from "../api/api.js";
 
 
 //var serverUrl = process.env.VUE_APP_SERVER_URL;
@@ -32,6 +35,7 @@ Vue.prototype.$serverUrl = process.env.VUE_APP_SERVER_URL;
 Vue.prototype.$appName = "My App";
 Vue.prototype.$axios = axios;
 Vue.prototype.$helper = Helper;
+Vue.prototype.$api = API;
 
 // Vue.use({
 //   install() {

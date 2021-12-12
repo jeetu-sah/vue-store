@@ -169,7 +169,9 @@
             />
           </div>
           <div class="info">
-            <router-link to="/admin/dashboard" class="d-block"
+            <router-link 
+              :to="{ name:'admin.employee.employee-list' }"
+              class="d-block"
               >Alexander Pierce</router-link
             >
           </div>
@@ -278,6 +280,9 @@ export default {
   component: {},
   data() {
     return {
+      actionUrl:{
+        logoutUrl: `${this.$serverUrl}api/logout`,
+      },
       to:'/logout'
     }
   },
@@ -285,8 +290,24 @@ export default {
     UserlogOut:function(){
       let con = confirm("Are you sure want to logout?");
       if(con == true){
-        localStorage.removeItem('usertoken')
-        this.$router.push('/login')
+        this.$axios
+            .post(this.actionUrl.logoutUrl, {}, {
+                headers: this.$helper.authHeader()
+            })
+            .then((response) => {
+              if (response.data.status == 200) {
+                  localStorage.removeItem('usertoken')
+                  this.$router.push('/login')
+              } else {
+                console.log(response);
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+            })
+            .finally(() => {
+              console.log("loading false");
+            });
       }
     },
     openMainMenu(input) {

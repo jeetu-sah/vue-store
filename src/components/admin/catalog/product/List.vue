@@ -11,7 +11,7 @@
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                   <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li class="breadcrumb-item active">Employee List</li>
+                  <li class="breadcrumb-item active">Product List</li>
                 </ol>
               </div>
             </div>
@@ -24,9 +24,8 @@
                 <router-link 
                   class="btn btn-success" 
                   to="/admin/employee/create"
-                  >Add New Employee</router-link
+                  >Add New Product</router-link
                 >
-                {{responseData}}
               </div>
             </div>
           </div>
@@ -65,7 +64,6 @@ import { AgGridVue } from "ag-grid-vue";
 export default {
   name: "Dashboard",
   components: {
-   
     AgGridVue,
   },
   props: {},
