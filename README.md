@@ -1,24 +1,7 @@
-# my-app
+# Vue Store
 
-## Project setup
+## Introduction
 ```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
+Hello Everyone, I am creating a E-commerce application on vue js and along with i am sharing my working experiance with all Developers.
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
