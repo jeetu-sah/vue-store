@@ -6,7 +6,7 @@ Hello Everyone, I am creating a E-commerce application on vue js and along with 
 I hope this will be helpful for everyone.
 
 ## Sponsors
-Support my Goodwork by being sponsors and backers
+Support my Goodwork by being sponsors and backers.
 
 
 
