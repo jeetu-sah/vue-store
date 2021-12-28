@@ -10,7 +10,7 @@ Support my Goodwork by being sponsors and backers.
 
 ## Live Demo
 
-[go](https://vuejs.jswebsolutions.in/){:target="_blank"
+https://vuejs.jswebsolutions.in/
 
 
 
