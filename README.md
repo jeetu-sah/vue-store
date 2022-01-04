@@ -12,6 +12,14 @@ https://vuejs.jswebsolutions.in/
 Support my Goodwork by being sponsors and backers.
 
 
+## License
+Support my Goodwork by being sponsors and backers.
+
+<a href="https://opensource.org/licenses/MIT">MIT</a>
+
+Copyright (c) 2021-present, Jitendra sahu
+
+
 
 
 
