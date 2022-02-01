@@ -5,12 +5,7 @@ import AdminRoutes from "./routes/admin";
 import Config from "./config.json";
 import { ContentLoader } from "vue-content-loader";
 import VueRouteMiddleware from "vue-route-middleware";
-
-import "./admin-webu/dist/css/adminlte.min.css";
-import "./admin-webu/plugins/font-awesome/css/font-awesome.min.css";
-import "./admin-webu/plugins/jquery/jquery.min.js";
-import "./admin-webu/plugins/bootstrap/js/bootstrap.bundle.min.js";
-import "./admin-webu/dist/js/adminlte.js";
+import store from "./store/store.js";
 
 import GuestMiddleware from "./middleware/guest";
 
@@ -20,7 +15,6 @@ Vue.prototype.$config = Config;
 
 
 Vue.config.productionTip = false;
-
 Vue.use(VueRouter);
 
 import Home from "./components/Home.vue";
@@ -68,6 +62,7 @@ router.beforeEach(VueRouteMiddleware({ GuestMiddleware }));
 
 new Vue({
   router,
+  store,
   render: (h) => h(App),
 }).$mount("#app");
 

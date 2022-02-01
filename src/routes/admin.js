@@ -1,4 +1,5 @@
 import Vue from "vue";
+import Vuex from "vuex";
 import Router from "vue-router";
 import Dashboard from "../components/admin/Dashboard";
 import EmployeeList from "../../src/components/admin/employee/List";
@@ -9,30 +10,32 @@ import CategoryCreate from "../../src/components/admin/catalog/category/Create";
 import EmployeeMain from "../../src/components/admin/employee/EmployeeMain";
 import CatalogMain from "../../src/components/admin/catalog/CataLogMain";
 import AttributeList from "../../src/components/admin/catalog/attribute/List";
+import AttributeCreate from "../../src/components/admin/catalog/attribute/Create";
 import ProductList from '../components/admin/catalog/product/List';
+import ProductCreate from "../components/admin/catalog/product/Create";
 import Login from "../components/Login.vue";
+
 
 
 
 // import "../admin-webu/dist/css/adminlte.min.css";
 // import "../admin-webu/plugins/font-awesome/css/font-awesome.min.css";
-
 // import "../admin-webu/plugins/jquery/jquery.min.js";
 // import "../admin-webu/plugins/bootstrap/js/bootstrap.bundle.min.js";
 // import "../admin-webu/dist/js/adminlte.js";
-
 
 
 import axios from "axios";
 import AuthMiddleware from "../middleware/auth";
 import GuestMiddleware from "../middleware/guest";
 import Helper from "../helper/helper";
-import API from "../api/api.js";
+import API from "../api/api.json";
+
 
 
 //var serverUrl = process.env.VUE_APP_SERVER_URL;
 Vue.prototype.$serverUrl = process.env.VUE_APP_SERVER_URL;
-Vue.prototype.$appName = "My App";
+Vue.prototype.$appName = "Vue Store";
 Vue.prototype.$axios = axios;
 Vue.prototype.$helper = Helper;
 Vue.prototype.$api = API;
@@ -44,6 +47,8 @@ Vue.prototype.$api = API;
 // });
 
 Vue.use(Router);
+Vue.use(Vuex);
+
 
 const admin = [
   {
@@ -74,30 +79,34 @@ const admin = [
         path: "category",
         component: CategoryList,
         name: "admin.catalog.category",
-        meta: {
-          middleware: [AuthMiddleware],
-        },
       },
       {
         path: "category/create",
         component: CategoryCreate,
         name: "admin.catalog.category.create",
-        meta: {
-          middleware: [AuthMiddleware],
-        },
       },
       {
         path: "attribute",
         component: AttributeList,
         name: "admin.catalog.attribute",
-        meta: {
-          middleware: [AuthMiddleware],
-        },
+      },
+      {
+        path: "attribute/create",
+        component: AttributeCreate,
+        name: "admin.catalog.attribute.create",
       },
       {
         path: "product",
         component: ProductList,
         name: "admin.catalog.product",
+        meta: {
+          middleware: [AuthMiddleware],
+        },
+      },
+      {
+        path: "product/create",
+        component: ProductCreate,
+        name: "admin.catalog.product.create",
         meta: {
           middleware: [AuthMiddleware],
         },

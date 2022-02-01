@@ -74,8 +74,8 @@ export default {
     return {
       loginUrl: `${this.$serverUrl}api/login`,
       user: {
-        email: null,
-        password: null,
+        email: 'adella.dach@example.com',
+        password: 'password',
         remember: null,
       },
     };
@@ -89,7 +89,8 @@ export default {
             localStorage.setItem('usertoken', response.data.token);
             this.user.email = this.user.password = '';
               //this.$router.go("/admin/dashboard");
-              this.$router.push("/admin/dashboard");
+              //this.$router.push("/admin/dashboard");
+              this.$router.push({ name: 'admin.dashboard'});
           }else{
             console.log("Something went wrong, please try again")
           }

@@ -11,7 +11,7 @@
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                   <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li class="breadcrumb-item active">Employee List</li>
+                  <li class="breadcrumb-item active">Attribute List</li>
                 </ol>
               </div>
             </div>
@@ -23,10 +23,9 @@
               <div class="col-lg-12">
                 <router-link 
                   class="btn btn-success" 
-                  to="/admin/employee/create"
-                  >Add New Employee</router-link
+                  :to="{name: 'admin.catalog.attribute.create'}"
+                  >Add New Attribute</router-link
                 >
-                {{responseData}}
               </div>
             </div>
           </div>
@@ -37,7 +36,7 @@
               <div class="col-lg-12">
                 <div class="card card-primary card-outline">
                   <div class="card-header">
-                    <h5 class="m-0">Employee List</h5>
+                    <h5 class="m-0">Attribute List</h5>
                   </div>
                   <div class="card-body">
                     <ag-grid-vue

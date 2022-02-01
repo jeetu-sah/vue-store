@@ -190,7 +190,7 @@
                                                                       '/admin/catalog/product']) }">
                 <i class="nav-icon fa fa-dashboard"></i>
                 <p>
-                   Manage Catalog
+                  Manage Catalog
                   <i class="right fa fa-angle-left"></i>
                 </p>
               </a>
@@ -209,6 +209,7 @@
                 <li class="nav-item">
                   <router-link
                     class="nav-link"
+                    :class="{'active': openMainMenu('/admin/catalog/attribute') }"
                     :to="{ name: 'admin.catalog.attribute' }"
                     exact
                   >
@@ -219,8 +220,8 @@
                 <li class="nav-item">
                   <router-link
                     class="nav-link"
-                    :to="{ name: 'admin.catalog.product' }"
-                    exact
+                    :class="{'active': openMainMenu('/admin/catalog/product') }"
+                    :to="{name: 'admin.catalog.product'}"
                   >
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>Manage Product</p>

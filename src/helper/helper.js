@@ -9,10 +9,7 @@
 //     return {};
 //   }
 // }
-
-
 export default {
-
   authHeader() {
     let user = localStorage.getItem("usertoken");
     if (user){

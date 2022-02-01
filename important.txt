@@ -87,14 +87,23 @@ npm uninstall -g <name> --save
 1. npm uninstall <name> --save
 npm uninstall ag-grid-vue3 --save
 npm uninstall vue-datasource --save
+npm uninstall vuex --save
+npm uninstall vuex --save
+npm uninstall jquery --save
 
 Important
 npm i webpack@4.44.2
 
+npm i vuex@3.0
+
+Vuex tutorials.
+https://www.codingame.com/playgrounds/6661/vuex-tutorial
+https://markus.oberlehner.net/blog/how-to-structure-a-complex-vuex-store/
 
 
 
-
+E-commerce Attribute.
+https://www.dckap.com/flexipim/blog/ecommerce-product-attributes-everything-you-must-know/
 
 
 

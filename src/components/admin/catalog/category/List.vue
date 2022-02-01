@@ -97,6 +97,9 @@ export default {
   },
   mounted() {
     this.loadCategoryList();
+    //load category.
+    console.log("List category page")
+    console.log(this.$store.state.a.categories);
    
   },
    beforeMount() {

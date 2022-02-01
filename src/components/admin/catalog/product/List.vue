@@ -23,7 +23,7 @@
               <div class="col-lg-12">
                 <router-link 
                   class="btn btn-success" 
-                  to="/admin/employee/create"
+                    :to="{ name: 'admin.catalog.product.create' }"
                   >Add New Product</router-link
                 >
               </div>
@@ -36,7 +36,7 @@
               <div class="col-lg-12">
                 <div class="card card-primary card-outline">
                   <div class="card-header">
-                    <h5 class="m-0">Employee List</h5>
+                    <h5 class="m-0">Product List</h5>
                   </div>
                   <div class="card-body">
                     <ag-grid-vue

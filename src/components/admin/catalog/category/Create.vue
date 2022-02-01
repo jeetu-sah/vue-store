@@ -165,9 +165,9 @@ export default {
             //this.router.push({ name: 'user', params: { userId: '123' } })
             //this.router.push({ name: 'admin.catalog.category'})
           } else {
-            console.log(response);
-            console.log(response.data);
-            console.log(response.data.msg);
+            // console.log(response);
+            // console.log(response.data);
+            // console.log(response.data.msg);
           }
         })
         .catch((error) => {
@@ -183,14 +183,12 @@ export default {
             headers: this.$helper.authHeader()
         })
         .then((response) => {
-          console.log(response.data.response)
-          console.log(response.data.status)
           if (response.data.status == 200) {
             document.getElementById('parent_category').innerHTML = response.data.response;
           } else {
-            console.log(response);
-            console.log(response.data);
-            console.log(response.data.msg);
+            // console.log(response);
+            // console.log(response.data);
+            // console.log(response.data.msg);
           }
         })
         .catch((error) => {
@@ -206,9 +204,9 @@ export default {
   },
   beforeCreate: function() {
     //console.log(this.empployeeCreateFormAction); Note Working because this funation will be intialize after mounter
-    console.log();
-    console.log(this.$appName);
-    console.log(this.$serverUrl);
+    // console.log();
+    // console.log(this.$appName);
+    // console.log(this.$serverUrl);
   },
   created() {
     this.getParentCategory();

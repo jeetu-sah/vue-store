@@ -11,7 +11,7 @@
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                   <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li class="breadcrumb-item active">Add New Employee</li>
+                  <li class="breadcrumb-item active">Add New Attribute</li>
                 </ol>
               </div>
             </div>
@@ -22,8 +22,8 @@
             <div class="row">
               <div class="col-lg-12">
                 <router-link class="btn btn-success"
-                  :to="{ name: 'admin.employee.employee-list'}"
-                  >Employee List</router-link
+                  :to="{ name: 'admin.catalog.attribute'}"
+                  >Attribute List</router-link
                 >
               </div>
             </div>
@@ -35,7 +35,7 @@
               <div class="col-lg-12">
                 <div class="card card-primary card-outline">
                   <div class="card-header">
-                    <h5 class="m-0">Add New Employee</h5>
+                    <h5 class="m-0">Add New Attribute</h5>
                   </div>
                   <div class="card-body">
                     <form
@@ -47,15 +47,12 @@
                       <div class="row">
                         <div class="col-sm-6">
                           <div class="form-group">
-                            <label for="first_name">First Name</label>
-                            <input
-                              type="text"
-                              name="first_name"
-                              class="form-control"
-                              id="first_name"
-                              placeholder="First Name"
-                              v-model="employee.first_name"
-                            />
+                            <label for="first_name">Field Types</label>
+                            <select name="field_type" 
+                                  class="form-control" 
+                                  id="field_type">
+                                <option value="" v-for="(fieldType, fieldTypeIndex) in formFieldTypes" :key="fieldTypeIndex">{{fieldType}}</option>
+                            </select>
                           </div>
                         </div>
                         <div class="col-sm-6">
@@ -133,7 +130,6 @@
 </template>
 <script>
 
-
 export default {
   name: "Create",
   components: {
@@ -150,6 +146,7 @@ export default {
         mobile: "",
         password: "",
       },
+      formFieldTypes:null,
     };
   },
   methods: {
@@ -174,6 +171,13 @@ export default {
         });
     },
   },
+  mounted() {  
+    document.title = this.$appName + " | Create Attribute"; 
+    //get Field type record.
+     this.formFieldTypes = this.$store.getters.getFormFieldType;
+     console.log(this.formFieldTypes)
+
+  },  
   beforeMount() {
     // this.empployeeCreateFormAction = `${this.$appName}`;
   },
