@@ -1,24 +1,29 @@
-# my-app
+# Vue Store
 
-## Project setup
-```
-npm install
-```
+## Introduction
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Hello Everyone, I am creating an E-commerce application on Vue js, and along I am sharing my working experience with all Developers. In this application, I will use code the different-2 plugins. The details of which type of plugins can be used to create a Vue JS application will be found in this application. I hope this will be helpful for everyone.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Live Demo
 
-### Lints and fixes files
-```
-npm run lint
-```
+https://vuejs.jswebsolutions.in/
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Sponsors
+Support my Goodwork by being sponsors and backers.
+
+
+## License
+Support my Goodwork by being sponsors and backers.
+
+<a href="https://opensource.org/licenses/MIT">MIT</a>
+
+Copyright (c) 2021-present, Jitendra sahu
+
+
+
+
+
+ 
+
+
+
