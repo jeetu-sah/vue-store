@@ -14,7 +14,7 @@ import AttributeCreate from "../../src/components/admin/catalog/attribute/Create
 import ProductList from '../components/admin/catalog/product/List';
 import ProductCreate from "../components/admin/catalog/product/Create";
 import Login from "../components/Login.vue";
-
+import Notifications from "@voerro/vue-notifications";
 
 
 
@@ -46,6 +46,7 @@ Vue.prototype.$api = API;
 //   },
 // });
 
+Vue.component("notifications", Notifications);
 Vue.use(Router);
 Vue.use(Vuex);
 

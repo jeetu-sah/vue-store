@@ -20,6 +20,12 @@
         <div class="content" style="margin-bottom:20px;">
           <div class="container-fluid">
             <div class="row">
+              <notifications>Show On pahe</notifications>
+              <notifications
+                  v-if="showMsg"
+                  notification="A notification on page load"></notifications>
+            </div>
+            <div class="row">
               <div class="col-lg-12">
                 <router-link class="btn btn-success"
                   :to="{ name: 'admin.catalog.attribute'}"
@@ -41,7 +47,7 @@
                     <form
                       id="employeeForm"
                       role="form"
-                      :action="empployeeCreateFormAction"
+                      :action="attributeActionForm"
                       v-on:submit.prevent="submitForm"
                     >
                       <div class="row">
@@ -50,21 +56,23 @@
                             <label for="first_name">Field Types</label>
                             <select name="field_type" 
                                   class="form-control" 
+                                  v-model="attributes.type"
                                   id="field_type">
-                                <option value="" v-for="(fieldType, fieldTypeIndex) in formFieldTypes" :key="fieldTypeIndex">{{fieldType}}</option>
+                                <option value="hidden">Select attribute type</option>
+                                <option v-for="(fieldType, fieldTypeIndex) in formFieldTypes" 
+                                    :value="fieldTypeIndex"
+                                    :key="fieldTypeIndex">{{fieldType}}</option>
                             </select>
                           </div>
                         </div>
                         <div class="col-sm-6">
                           <div class="form-group">
-                            <label for="last_name">Last Name</label>
+                            <label for="last_name">Attribute Label Name</label>
                             <input
                               type="text"
-                              name="last_name"
                               class="form-control"
-                              id="last_name"
-                              placeholder="Last Name"
-                              v-model="employee.last_name"
+                              placeholder="Attribute Label Name"
+                              v-model="attributes.label_name"
                             />
                           </div>
                         </div>
@@ -72,47 +80,43 @@
                       <div class="row">
                         <div class="col-sm-6">
                           <div class="form-group">
-                            <label for="email">Email address</label>
-                            <input
-                              type="email"
-                              name="email_address"
-                              id="email_address"
-                              class="form-control"
-                              placeholder="Enter email"
-                              v-model="employee.email"
-                            />
+                            <label for="status">Status</label>
+                            <select name="attribute_status" 
+                                  class="form-control" 
+                                   v-model="attributes.attribute_status"
+                                  id="attribute_status">
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                            </select>
                           </div>
                         </div>
                         <div class="col-sm-6">
                           <div class="form-group">
-                            <label for="mobile">Mobile</label>
-                            <input
-                              type="text"
-                              name="mobile"
-                              id="mobile"
-                              class="form-control"
-                              placeholder="Enter Mobile"
-                              v-model="employee.mobile"
-                            />
+                            <label for="status">Is Required?</label>
+                            <select name="attribute_status" 
+                                  class="form-control" 
+                                   v-model="attributes.is_required"
+                                  id="is_required">
+                                <option value="YES">Yes</option>
+                                <option value="NO">No</option>
+                            </select>
                           </div>
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-sm-12">
                           <div class="form-group">
-                            <label for="password">Password</label>
-                            <input
-                              type="password"
-                              name="password"
+                            <label for="description">Description</label>
+                            <textarea
+                              name="description"
                               class="form-control"
-                              id="exampleInputPassword1"
-                              placeholder="Password"
-                              v-model="employee.password"
-                            />
+                              id="description"
+                              placeholder="Description"
+                              v-model="attributes.description"
+                            ></textarea>
                           </div>
                         </div>
                       </div>
-
                       <!-- /.card-body -->
                       <button type="submit" class="btn btn-primary">
                         Submit
@@ -128,8 +132,8 @@
     </div>
   </div>
 </template>
-<script>
 
+<script>
 export default {
   name: "Create",
   components: {
@@ -138,13 +142,14 @@ export default {
   props: {},
   data() {
     return {
-      empployeeCreateFormAction: `${this.$serverUrl}employee/create`,
-      employee: {
-        first_name: "",
-        last_name: "",
-        email: "",
-        mobile: "",
-        password: "",
+      attributeActionForm: `${this.$serverUrl}${this.$api.post.create_attribute}`,
+      showMsg:true,
+      attributes: {
+        type: "hidden",
+        label_name: "",
+        attribute_status: "active",
+        is_required:'YES',
+        description: "",
       },
       formFieldTypes:null,
     };
@@ -153,39 +158,29 @@ export default {
     submitForm: function() {
       //var FormDataRes =  new FormData(document.getElementById('employeeForm'))
       this.$axios
-        .post(this.empployeeCreateFormAction, this.employee)
-        .then((response) => {
-          if (response.data.status == 200) {
-            this.$router.push("list");
-          } else {
-            console.log(response);
-            console.log(response.data);
-            console.log(response.data.msg);
+        .post(this.attributeActionForm, this.attributes,{
+            headers: this.$helper.authHeader()
+        }).then((response) => {
+          if(response.status == 200){
+            console.log(response.data.status);
+            if(response.data.status){
+              
+              //console.log(response)
+            }
           }
         })
         .catch((error) => {
           console.log(error);
         })
-        .finally(() => {
-          console.log("loading false");
-        });
     },
   },
   mounted() {  
+    //set title
     document.title = this.$appName + " | Create Attribute"; 
     //get Field type record.
-     this.formFieldTypes = this.$store.getters.getFormFieldType;
-     console.log(this.formFieldTypes)
+    this.formFieldTypes = this.$store.getters['attribute/getAttributes'];
+    //this.formFieldTypes = this.$store.attribute.getters.getFormFieldType;
 
   },  
-  beforeMount() {
-    // this.empployeeCreateFormAction = `${this.$appName}`;
-  },
-  beforeCreate: function() {
-    //console.log(this.empployeeCreateFormAction); Note Working because this funation will be intialize after mounter
-
-    console.log(this.$appName);
-    console.log(this.$serverUrl);
-  },
 };
 </script>

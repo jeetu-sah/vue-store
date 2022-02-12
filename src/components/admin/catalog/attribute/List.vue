@@ -64,42 +64,45 @@ import { AgGridVue } from "ag-grid-vue";
 export default {
   name: "Dashboard",
   components: {
-   
     AgGridVue,
   },
   props: {},
   data() {
     return {
-      empployeeCreateFormAction: `${this.$serverUrl}api/employee/list`,
+      attributeListAction: `${this.$serverUrl}${this.$api.post.list_attribute}`,
       columnDefs: null,
       rowData: null,
       responseData:'Jitendra sahu',
     };
   },
   methods: {
-    loadEmployee: function() {
-      console.log(this.empployeeCreateFormAction);
+    loatAttributesList: function() {
       this.$axios
-        .get(this.empployeeCreateFormAction, this.employee)
+        .post(this.attributeListAction, this.employee,{
+            headers: this.$helper.authHeader()
+        })
         .then((response) => {
           this.rowData = response.data.response;
         })
         .catch((error) => {
           console.log(error);
         })
-        .finally(() => {
-          console.log("loading false");
-        });
     },
   },
   mounted() {
-    this.loadEmployee();
+     //set title
+    document.title = this.$appName + " | Attribute List"; 
+    //load attributes
+    this.loatAttributesList();
   },
    beforeMount() {
+    
     this.columnDefs = [
-      { field: "name",sortable: true, filter: true,checkboxSelection: true   },
-      { field: "email",sortable: true, filter: true },
-      { field: "price",sortable: true, filter: true },
+      { headerName: 'Attribute Type',field: "attribute_type",sortable: true, filter: true,checkboxSelection: true   },
+      { headerName: 'Attribute Name', field: "attribute_name",sortable: true, filter: true },
+      { headerName: 'Attribute Desc.', field: "attribute_desc",sortable: true, filter: true },
+      { headerName: 'Attribute Status', field: "attribute_status",sortable: true, filter: true },
+      { headerName: 'Is Required', field: "is_required",sortable: true, filter: true },
     ];
     //load employee data.
     this.loadEmployee();

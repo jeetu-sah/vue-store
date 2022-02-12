@@ -158,16 +158,11 @@ export default {
             headers: this.$helper.authHeader()
         })
         .then((response) => {
-          console.log(response)
-          console.log(response.status)
           if (response.status == 200) {
             this.getParentCategory();
-            //this.router.push({ name: 'user', params: { userId: '123' } })
-            //this.router.push({ name: 'admin.catalog.category'})
+           
           } else {
             // console.log(response);
-            // console.log(response.data);
-            // console.log(response.data.msg);
           }
         })
         .catch((error) => {

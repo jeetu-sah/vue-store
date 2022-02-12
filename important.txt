@@ -99,6 +99,11 @@ npm i vuex@3.0
 Vuex tutorials.
 https://www.codingame.com/playgrounds/6661/vuex-tutorial
 https://markus.oberlehner.net/blog/how-to-structure-a-complex-vuex-store/
+https://www.digitalocean.com/community/tutorials/how-to-manage-state-in-a-vue-js-application-with-vuex
+
+
+Vue notification
+https://github.com/voerro/vue-notifications?ref=vuejsexamples.com
 
 
 

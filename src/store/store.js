@@ -1,12 +1,14 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import category from './catalog/category';  
+import attribute from "./catalog/attribute";  
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
   modules: {
-    a: category,
+    category,
+    attribute,
   },
   state: {
     formFieldType: {
@@ -31,5 +33,5 @@ const store = new Vuex.Store({
   },
 });
 store.state.a // -> `moduleA`'s state
-store.state.b // -> `moduleB`'s state
+store.state.attribute; // -> `moduleB`'s state
 export default store;

@@ -4,6 +4,8 @@
   },
   "post": {
     "base_url": "http://localhost:8080",
-    "user_check_login": "api/user/check/login"
+    "user_check_login": "api/user/check/login",
+    "create_attribute": "api/catalog/attribute/create",
+    "list_attribute": "api/catalog/attribute/list"
   }
 }
