@@ -24,7 +24,12 @@ import Cources from "./components/Cources.vue";
 import Events from "./components/Events.vue";
 import Pricing from "./components/Pricing.vue";
 
+
+
 import Signup from "./components/Signup.vue";
+
+
+
 
 var mainRoute = [
   {
@@ -61,6 +66,7 @@ const router = new VueRouter({
 router.beforeEach(VueRouteMiddleware({ GuestMiddleware }));
 
 new Vue({
+ 
   router,
   store,
   render: (h) => h(App),

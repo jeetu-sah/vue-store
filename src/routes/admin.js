@@ -11,10 +11,15 @@ import EmployeeMain from "../../src/components/admin/employee/EmployeeMain";
 import CatalogMain from "../../src/components/admin/catalog/CataLogMain";
 import AttributeList from "../../src/components/admin/catalog/attribute/List";
 import AttributeCreate from "../../src/components/admin/catalog/attribute/Create";
+import AttributeGroupCreate from "../../src/components/admin/catalog/attribute-group/Create";
+import AttributeGroupList from "../../src/components/admin/catalog/attribute-group/List";
 import ProductList from '../components/admin/catalog/product/List';
 import ProductCreate from "../components/admin/catalog/product/Create";
 import Login from "../components/Login.vue";
 import Notifications from "@voerro/vue-notifications";
+
+import FormValidation from "../components/admin/common/FormValidation";
+import DeleteBtn from "../components/admin/common/DeleteBtn";
 
 
 
@@ -32,6 +37,8 @@ import Helper from "../helper/helper";
 import API from "../api/api.json";
 
 
+Vue.component("FormValidation", FormValidation);
+Vue.component("DeleteBtn", DeleteBtn);
 
 //var serverUrl = process.env.VUE_APP_SERVER_URL;
 Vue.prototype.$serverUrl = process.env.VUE_APP_SERVER_URL;
@@ -95,6 +102,22 @@ const admin = [
         path: "attribute/create",
         component: AttributeCreate,
         name: "admin.catalog.attribute.create",
+      },
+      {
+        path: "attributegroup/create",
+        component: AttributeGroupCreate,
+        name: "admin.catalog.attribute-group.create",
+        meta: {
+          middleware: [AuthMiddleware],
+        },
+      },
+      {
+        path: "attributegroup/list",
+        component: AttributeGroupList,
+        name: "admin.catalog.attribute-group.list",
+        meta: {
+          middleware: [AuthMiddleware],
+        },
       },
       {
         path: "product",

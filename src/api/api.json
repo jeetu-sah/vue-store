@@ -6,6 +6,7 @@
     "base_url": "http://localhost:8080",
     "user_check_login": "api/user/check/login",
     "create_attribute": "api/catalog/attribute/create",
-    "list_attribute": "api/catalog/attribute/list"
+    "list_attribute": "api/catalog/attribute/list",
+    "create_attribute_group": "api/catalog/attribute-group/create"
   }
 }

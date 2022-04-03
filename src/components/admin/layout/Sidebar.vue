@@ -1,7 +1,13 @@
 <template>
   <div>
     <nav
-      class="main-header navbar navbar-expand bg-white navbar-light border-bottom"
+      class="
+        main-header
+        navbar navbar-expand
+        bg-white
+        navbar-light
+        border-bottom
+      "
     >
       <!-- Left navbar links -->
       <ul class="navbar-nav">
@@ -155,7 +161,7 @@
           src="../../../admin-webu/dist/img/AdminLTELogo.png"
           alt="AdminLTE Logo"
           class="brand-image img-circle elevation-3"
-          style="opacity: .8"
+          style="opacity: 0.8"
         />
         <span class="brand-text font-weight-light">AdminLTE 3</span>
       </router-link>
@@ -169,8 +175,8 @@
             />
           </div>
           <div class="info">
-            <router-link 
-              :to="{ name:'admin.employee.employee-list' }"
+            <router-link
+              :to="{ name: 'admin.employee.employee-list' }"
               class="d-block"
               >Alexander Pierce</router-link
             >
@@ -183,11 +189,21 @@
             role="menu"
             data-accordion="false"
           >
-            <li class="nav-item has-treeview" :class="{ 'menu-open': openMainMenu('/admin/catalog/') }">
-
-               <a href="#" class="nav-link" :class="{ 'active': subIsActive(['/admin/catalog/category', 
-                                                                      '/admin/catalog/attribute',
-                                                                      '/admin/catalog/product']) }">
+            <li
+              class="nav-item has-treeview"
+              :class="{ 'menu-open': openMainMenu('/admin/catalog/') }"
+            >
+              <a
+                href="#"
+                class="nav-link"
+                :class="{
+                  active: subIsActive([
+                    '/admin/catalog/category',
+                    '/admin/catalog/attribute',
+                    '/admin/catalog/product',
+                  ]),
+                }"
+              >
                 <i class="nav-icon fa fa-dashboard"></i>
                 <p>
                   Manage Catalog
@@ -199,7 +215,7 @@
                 <li class="nav-item">
                   <router-link
                     class="nav-link"
-                    :class="{'active': openMainMenu('/admin/catalog/category') }"
+                    :class="{ active: openMainMenu('/admin/catalog/category') }"
                     :to="{ name: 'admin.catalog.category' }"
                   >
                     <i class="fa fa-circle-o nav-icon"></i>
@@ -209,7 +225,22 @@
                 <li class="nav-item">
                   <router-link
                     class="nav-link"
-                    :class="{'active': openMainMenu('/admin/catalog/attribute') }"
+                    :class="{
+                      active: openMainMenu('/admin/catalog/attributegroup'),
+                    }"
+                    :to="{ name: 'admin.catalog.attribute-group.list' }"
+                    exact
+                  >
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>Attribute Group</p>
+                  </router-link>
+                </li>
+                <li class="nav-item">
+                  <router-link
+                    class="nav-link"
+                    :class="{
+                      active: openMainMenu('/admin/catalog/attribute'),
+                    }"
                     :to="{ name: 'admin.catalog.attribute' }"
                     exact
                   >
@@ -217,11 +248,12 @@
                     <p>Manage Attribute</p>
                   </router-link>
                 </li>
+
                 <li class="nav-item">
                   <router-link
                     class="nav-link"
-                    :class="{'active': openMainMenu('/admin/catalog/product') }"
-                    :to="{name: 'admin.catalog.product'}"
+                    :class="{ active: openMainMenu('/admin/catalog/product') }"
+                    :to="{ name: 'admin.catalog.product' }"
                   >
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>Manage Product</p>
@@ -229,12 +261,21 @@
                 </li>
               </ul>
             </li>
-            <li class="nav-item has-treeview"
-               :class="{ 'menu-open': openMainMenu('/admin/employee/') }"
+            <li
+              class="nav-item has-treeview"
+              :class="{ 'menu-open': openMainMenu('/admin/employee/') }"
+            >
+              <a
+                href="#"
+                class="nav-link"
+                :class="{
+                  active: subIsActive([
+                    '/admin/employee',
+                    '/admin/employee/create',
+                    '/admin/employee/create/task-list',
+                  ]),
+                }"
               >
-              <a href="#" class="nav-link" :class="{ 'active': subIsActive(['/admin/employee', 
-                                                                      '/admin/employee/create',
-                                                                      '/admin/employee/create/task-list']) }">
                 <i class="nav-icon fa fa-dashboard"></i>
                 <p>
                   Manage Employee
@@ -244,9 +285,10 @@
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <router-link
-                    :to="{ name:'admin.employee.employee-list' }"
+                    :to="{ name: 'admin.employee.employee-list' }"
                     exact
-                    class="nav-link">
+                    class="nav-link"
+                  >
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>Employee List</p>
                   </router-link>
@@ -255,7 +297,8 @@
                   <router-link
                     :to="{ name: 'admin.employee.tasklist' }"
                     exact
-                    class="nav-link">
+                    class="nav-link"
+                  >
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>Task List</p>
                   </router-link>
@@ -265,7 +308,7 @@
             <li class="nav-item">
               <a href="#" @click.prevent="UserlogOut()" class="nav-link">
                 <i class="nav-icon fa fa-sign-out"></i>
-                <p> Logout </p>
+                <p>Logout</p>
               </a>
             </li>
           </ul>
@@ -281,39 +324,45 @@ export default {
   component: {},
   data() {
     return {
-      actionUrl:{
+      actionUrl: {
         logoutUrl: `${this.$serverUrl}api/logout`,
       },
-      to:'/logout'
-    }
+      to: "/logout",
+    };
   },
   methods: {
-    UserlogOut:function(){
+    UserlogOut: function () {
       let con = confirm("Are you sure want to logout?");
-      if(con == true){
+      if (con == true) {
         this.$axios
-            .post(this.actionUrl.logoutUrl, {}, {
-                headers: this.$helper.authHeader()
-            })
-            .then((response) => {
-              if (response.data.status == 200) {
-                  localStorage.removeItem('usertoken')
-                  this.$router.push('/login')
-              } else {
-                console.log(response);
-              }
-            })
-            .catch((error) => {
-              console.log(error);
-            })
-            .finally(() => {
-              console.log("loading false");
-            });
+          .post(
+            this.actionUrl.logoutUrl,
+            {},
+            {
+              headers: this.$helper.authHeader(),
+            }
+          )
+          .then((response) => {
+            if (response.data.status == 200) {
+              localStorage.removeItem("usertoken");
+              this.$router.push("/login");
+            } else {
+              console.log(response);
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+          .finally(() => {
+            console.log("loading false");
+          });
       }
     },
     openMainMenu(input) {
       var currentPath = this.$route.path;
-      return (currentPath.indexOf(input) === 0);
+   
+      return currentPath.indexOf(input) === 0;
+
       // console.log(input)
       // console.log(currentPath);
       // if(currentPath.indexOf(input) === 0){
@@ -329,10 +378,10 @@ export default {
     },
     subIsActive(input) {
       //console.log(this.$route)
-      const paths = Array.isArray(input) ? input : [input]
-      return paths.some(path => {
-        return this.$route.path.indexOf(path) === 0 // current path starts with this path string
-      })
+      const paths = Array.isArray(input) ? input : [input];
+      return paths.some((path) => {
+        return this.$route.path.indexOf(path) === 0; // current path starts with this path string
+      });
     },
   },
   props: ["responseData"],

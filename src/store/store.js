@@ -18,6 +18,16 @@ const store = new Vuex.Store({
       file: "File",
       number: "Number",
     },
+    status: [
+      {
+        key: "A",
+        value: "Active",
+      },
+      {
+        key: "P",
+        value: "Save In Draft",
+      },
+    ],
   },
   getters: {
     // put sychronous functions for changing state e.g. add, edit, delete
