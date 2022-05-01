@@ -1,6 +1,9 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import Router from "vue-router";
+
+
+
 import Dashboard from "../components/admin/Dashboard";
 import EmployeeList from "../../src/components/admin/employee/List";
 import EmployeeCreate from "../../src/components/admin/employee/Create";
@@ -20,8 +23,7 @@ import Notifications from "@voerro/vue-notifications";
 
 import FormValidation from "../components/admin/common/FormValidation";
 import DeleteBtn from "../components/admin/common/DeleteBtn";
-
-
+import EditBtn from "../components/admin/common/EditBtn";
 
 // import "../admin-webu/dist/css/adminlte.min.css";
 // import "../admin-webu/plugins/font-awesome/css/font-awesome.min.css";
@@ -36,9 +38,9 @@ import GuestMiddleware from "../middleware/guest";
 import Helper from "../helper/helper";
 import API from "../api/api.json";
 
-
 Vue.component("FormValidation", FormValidation);
 Vue.component("DeleteBtn", DeleteBtn);
+Vue.component("EditBtn", EditBtn);
 
 //var serverUrl = process.env.VUE_APP_SERVER_URL;
 Vue.prototype.$serverUrl = process.env.VUE_APP_SERVER_URL;
@@ -46,7 +48,6 @@ Vue.prototype.$appName = "Vue Store";
 Vue.prototype.$axios = axios;
 Vue.prototype.$helper = Helper;
 Vue.prototype.$api = API;
-
 // Vue.use({
 //   install() {
 //     Vue.helpers = Helper;
@@ -56,6 +57,7 @@ Vue.prototype.$api = API;
 Vue.component("notifications", Notifications);
 Vue.use(Router);
 Vue.use(Vuex);
+
 
 
 const admin = [
@@ -104,7 +106,7 @@ const admin = [
         name: "admin.catalog.attribute.create",
       },
       {
-        path: "attributegroup/create",
+        path: "attr-group/create",
         component: AttributeGroupCreate,
         name: "admin.catalog.attribute-group.create",
         meta: {
@@ -112,9 +114,17 @@ const admin = [
         },
       },
       {
-        path: "attributegroup/list",
+        path: "attr-group/list",
         component: AttributeGroupList,
         name: "admin.catalog.attribute-group.list",
+        meta: {
+          middleware: [AuthMiddleware],
+        },
+      },
+      {
+        path: "attr-group/edit/:id",
+        component: () => import('../components/admin/catalog/attribute-group/Edit'),
+        name: "admin.catalog.attribute-group.edit",
         meta: {
           middleware: [AuthMiddleware],
         },

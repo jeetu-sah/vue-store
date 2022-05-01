@@ -90,13 +90,14 @@ export default {
             this.user.email = this.user.password = '';
               //this.$router.go("/admin/dashboard");
               //this.$router.push("/admin/dashboard");
+              this.$root.successMsg("Login Successfully !!!");
               this.$router.push({ name: 'admin.dashboard'});
           }else{
-            console.log("Something went wrong, please try again")
+             this.$root.warningMsg(response.data.error);
           }
         })
-        .catch((error) => {
-          console.log(error);
+        .catch(() => {
+            this.$root.errorMsg();
         })
         .finally(() => {
           console.log("loading false");

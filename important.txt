@@ -101,10 +101,12 @@ https://www.codingame.com/playgrounds/6661/vuex-tutorial
 https://markus.oberlehner.net/blog/how-to-structure-a-complex-vuex-store/
 https://www.digitalocean.com/community/tutorials/how-to-manage-state-in-a-vue-js-application-with-vuex
 
+https://www.youtube.com/watch?v=naUCGByHRiA&list=PLolI8AY2AS9Y8ZI9rbffYOtEIqNEq4xNb
+
 
 Vue notification
 https://github.com/voerro/vue-notifications?ref=vuejsexamples.com
-
+https://github.com/ankurk91/vue-toast-notification/tree/v1.x
 
 
 E-commerce Attribute.
@@ -115,3 +117,5 @@ https://www.ecomdeveloper.com/demo/admin/index.php?route=common/dashboard&user_t
 
 
 
+<!--------AG GRID IMPORTANT URL------>
+https://codesandbox.io/s/relaxed-framework-plfn3?file=/src/components/HelloWorld.vue

@@ -1,14 +1,16 @@
 <template>
   <div>
-     <button class="btn btn-danger" data-action="delete">Delete</button>&nbsp;
-     <button class="btn btn-primary" data-action="edit">Edit</button>&nbsp;
+     <button class="btn btn-primary">Edit</button>&nbsp;
      <!-- <router-link :to="{ name: 'admin.catalog.attribute-group.create' }" class="btn btn-primary">Edit</router-link> -->
   </div>
 </template>
 
 <script>
+
+
 export default {
-  name: "DeleteBtn",
+   
+  name: "EditBtn",
   data() {
       return {
           msg:"Something went wrong, please try again",

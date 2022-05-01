@@ -42,15 +42,16 @@
                   </div>
                   <div class="card-body">
                     <ag-grid-vue
-                      style="height: 500px; width:100%"
+                      style="height:500px; width:100%"
                       class="ag-theme-alpine"
                       :columnDefs="columnDefs"
                       :rowData="rowData"
+                      @cell-clicked="onCellClicked"
                       :pagination='true'
                       rowSelection='multiple'
                       :paginationAutoPageSize ='true'
                       @grid-ready="onGridReady"
-                     
+                      :defaultColDef="defaultColDef"
                     >
                     </ag-grid-vue>
                   </div>
@@ -65,7 +66,13 @@
 </template>
 <script>
 import { AgGridVue } from "ag-grid-vue";
-import CatchMethods from '../../../../mixins/CatchMethods'
+import CatchMethods from '../../../../mixins/CatchMethods';
+
+// var statusValue = function (params) {
+
+//   console.log(params)
+//   return params;
+// };
 
 export default {
   name: "Dashboard",
@@ -80,10 +87,53 @@ export default {
       columnDefs: null,
       rowData: null,
       gridApi: null,
-      columnApi: null
+      columnApi: null,
+      statusArr: this.$store.state.status,
     };
   },
   methods: {
+    onCellClicked(params) {
+      if(params.column.colId === "Action"){
+        let action = params.event.target.dataset.action;
+        var id = params.node.data.id;
+          console.log(id);
+        if(action == "delete"){
+            console.log(id);
+          }else if(action == "edit"){
+              this.$router.push({ name: 'admin.catalog.attribute-group.edit', params: { id:id}});            
+          }
+      }
+      
+      // Handle click event for action cells
+      // if (
+      //   params.column.colId === 'action' &&
+      //   params.event.target.dataset.action
+      // ) {
+      //   let action = params.event.target.dataset.action;
+
+      //   if (action === 'edit') {
+      //     params.api.startEditingCell({
+      //       rowIndex: params.node.rowIndex,
+      //       // gets the first columnKey
+      //       colKey: params.columnApi.getDisplayedCenterColumns()[0].colId,
+      //     });
+      //   }
+
+      //   if (action === 'delete') {
+      //     params.api.applyTransaction({
+      //       remove: [params.node.data],
+      //     });
+      //   }
+
+      //   if (action === 'update') {
+      //     params.api.stopEditing(false);
+      //   }
+
+      //   if (action === 'cancel') {
+      //     params.api.stopEditing(true);
+      //   }
+      // }
+    },
     onGridReady(params) {
         this.gridApi = params.api;
         this.columnApi = params.columnApi;
@@ -111,7 +161,7 @@ export default {
         });
     },
     deleteAttributeGroup:function() {
-      console.log("Delete Method ")
+      console.log("Delete Method")
       // this.rowData.splice(params.rowData.index, 1);
       // console.log(this.rowData);
       // this.api.updateRowData({ remove: [params.rowData] });
@@ -119,6 +169,10 @@ export default {
       //   console.log(node.data);
       // });
       // return this.rowData;
+    },
+    statusValue:function(params){
+      const found = this.statusArr.find(element => (element.key == params.data.status));
+      return found.value;
     }
   },
   mounted() {
@@ -128,14 +182,21 @@ export default {
     this.columnDefs = [
       { field: "name",sortable: true, filter: true,checkboxSelection: true   },
       { field: "priority",sortable: true, filter: true },
-      { field: "status",sortable: true, filter: true },
+      { field: "status",sortable: true, filter: true,valueGetter: this.statusValue },
       { field: "Action",
+        editable: false,
+        colId: 'Action',
         cellRenderer: 'DeleteBtn',
         cellRendererParams: {
           onClick: this.deleteAttributeGroup(this),
         },
       },
     ];
+
+    this.defaultColDef = {
+      editable: true,
+    };
+
   },
 };
 </script>

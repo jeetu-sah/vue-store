@@ -29,7 +29,17 @@
                     <div class="card-body">
                       <h6 class="card-title">Special title treatment</h6>
                       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                      <a href="#" class="btn btn-primary" @click="showMsg">Go somewhere</a>
+                          <v-main>
+                            Hello World
+                          </v-main>
+                          <v-alert
+                              border="bottom"
+                              color="indigo"
+                              dark
+                            >
+                              I'm an alert with a bottom border and pink color
+                          </v-alert>
                     </div>
                   </div>
                 </div>
@@ -50,6 +60,11 @@ export default {
   components: {
     Sidebar,
     Footer
+  },
+  methods: {
+    showMsg:function(){
+      this.$root.successMsg("Something went wrong, please try again")
+    }
   },
   beforeCreate: function() {
     console.log(this.$appName)

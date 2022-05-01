@@ -16,9 +16,7 @@ export default function guest(to, from, next) {
           headers: Helper.authHeader(),
         }
       )
-      .then((response) => {
-        console.log("response");
-        console.log(response);
+      .then(() => {
         return next({ name: "admin.dashboard" });
       })
       .catch(function() {

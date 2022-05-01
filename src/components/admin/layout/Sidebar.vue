@@ -201,6 +201,7 @@
                     '/admin/catalog/category',
                     '/admin/catalog/attribute',
                     '/admin/catalog/product',
+                    '/admin/catalog/attr-group',
                   ]),
                 }"
               >
@@ -215,7 +216,7 @@
                 <li class="nav-item">
                   <router-link
                     class="nav-link"
-                    :class="{ active: openMainMenu('/admin/catalog/category') }"
+                    :class="{ active: subIsActive(['/admin/catalog/category']) }"
                     :to="{ name: 'admin.catalog.category' }"
                   >
                     <i class="fa fa-circle-o nav-icon"></i>
@@ -226,7 +227,7 @@
                   <router-link
                     class="nav-link"
                     :class="{
-                      active: openMainMenu('/admin/catalog/attributegroup'),
+                      active: subIsActive(['/admin/catalog/attr-group']),
                     }"
                     :to="{ name: 'admin.catalog.attribute-group.list' }"
                     exact
@@ -359,22 +360,17 @@ export default {
       }
     },
     openMainMenu(input) {
-      var currentPath = this.$route.path;
-   
-      return currentPath.indexOf(input) === 0;
-
-      // console.log(input)
-      // console.log(currentPath);
-      // if(currentPath.indexOf(input) === 0){
-      //    console.log("yes")
-      // }else{
-      //   console.log("no")
-      // }
-      // const paths = Array.isArray(input) ? input : [input]
-      // return paths.some(path => {
-      //     console.log( this.$route.path)
-      //   return this.$route.path.indexOf(path) === 0 // current path starts with this path string
-      // })
+      if(Array.isArray(input)){
+        input.forEach(item =>{
+          if( this.$route.path.match(item) ){
+            console.log("Active")
+            return true;
+          }         
+        });
+        //return this.$route.path.indexOf(input) === 0;
+      }else{
+        return this.$route.path.indexOf(input) === 0;
+      }
     },
     subIsActive(input) {
       //console.log(this.$route)
