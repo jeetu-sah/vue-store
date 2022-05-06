@@ -202,6 +202,7 @@
                     '/admin/catalog/attribute',
                     '/admin/catalog/product',
                     '/admin/catalog/attr-group',
+                    '/admin/catalog/manufacturers',
                   ]),
                 }"
               >
@@ -247,6 +248,19 @@
                   >
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>Manage Attribute</p>
+                  </router-link>
+                </li>
+                <li class="nav-item">
+                  <router-link
+                    class="nav-link"
+                    :class="{
+                      active: openMainMenu('/admin/catalog/manufacturers'),
+                    }"
+                    :to="{ name: 'admin.catalog.manufacturers' }"
+                    exact
+                  >
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>Manufacturers</p>
                   </router-link>
                 </li>
 

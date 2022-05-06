@@ -72,7 +72,7 @@ export default {
   name: "Login",
   data() {
     return {
-      loginUrl: `${this.$serverUrl}api/login`,
+      loginUrl: `${this.$serverUrl}login`,
       user: {
         email: 'adella.dach@example.com',
         password: 'password',

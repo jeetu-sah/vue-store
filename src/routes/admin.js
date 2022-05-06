@@ -123,8 +123,27 @@ const admin = [
       },
       {
         path: "attr-group/edit/:id",
-        component: () => import('../components/admin/catalog/attribute-group/Edit'),
+        component: () =>
+          import("../components/admin/catalog/attribute-group/Edit"),
         name: "admin.catalog.attribute-group.edit",
+        meta: {
+          middleware: [AuthMiddleware],
+        },
+      },
+      {
+        path: "manufacturers/list",
+        component: () =>
+          import("../components/admin/catalog/manufacturers/List"),
+        name: "admin.catalog.manufacturers",
+        meta: {
+          middleware: [AuthMiddleware],
+        },
+      },
+      {
+        path: "manufacturers/create",
+        component: () =>
+          import("../components/admin/catalog/manufacturers/Create"),
+        name: "admin.catalog.manufacturers.create",
         meta: {
           middleware: [AuthMiddleware],
         },
