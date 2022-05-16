@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import category from './catalog/category';  
 import attribute from "./catalog/attribute";  
+import manufacturers from "./catalog/manufacturers";  
 
 Vue.use(Vuex);
 
@@ -9,6 +10,7 @@ const store = new Vuex.Store({
   modules: {
     category,
     attribute,
+    manufacturers,
   },
   state: {
     formFieldType: {

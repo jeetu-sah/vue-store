@@ -77,6 +77,21 @@ new Vue({
     }
   },
   methods: {
+    appGetData(action, params = {}) {
+
+          return this.axios.get('/api/app-data', {
+              params: {
+                  action,
+                  ...params
+              }
+          });
+    },
+    appPostData(action, paramObj = {}) {
+        let url = `${this.$serverUrl}${action}`;
+        return  this.$axios.post(url, paramObj, {
+                    headers: this.$helper.authHeader(),
+                });
+    },
     successMsg: function(msg) {
       this.$toast.open({
         message: msg,

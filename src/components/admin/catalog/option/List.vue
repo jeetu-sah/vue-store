@@ -11,7 +11,7 @@
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                   <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li class="breadcrumb-item active">Manufacturers List</li>
+                  <li class="breadcrumb-item active">Option List</li>
                 </ol>
               </div>
             </div>
@@ -22,10 +22,10 @@
             <div class="row">
               <div class="col-lg-12">
                 <router-link
-                  :to="{ name: 'admin.catalog.manufacturers.create' }"
+                  :to="{ name: 'admin.catalog.product-option.create' }"
                 >
                   <v-btn color="white" flat value="profile">
-                    <span>Create New Manufacturers</span>
+                    <span>Create New Option</span>
                   </v-btn>
                 </router-link>
               </div>
@@ -38,7 +38,7 @@
               <div class="col-lg-12">
                 <div class="card card-primary card-outline">
                   <div class="card-header">
-                    <h5 class="m-0">Manufacturers List</h5>
+                    <h5 class="m-0">Option List</h5>
                   </div>
                   <div class="card-body">
                     <v-data-table
@@ -305,19 +305,6 @@ export default {
                 }).catch((err) => {
                       console.log(err);
                 });
-      // this.$axios
-      //   .post(action, {} , {
-      //     headers: this.$helper.authHeader(),
-      //   })
-      //   .then((response) => {
-      //       this.manufacturerList = response.data.response;
-      //   })
-      //   .catch((error) => {
-      //     console.log(error);
-      //   })
-      //   .finally(() => {
-      //     console.log("loading false");
-      //   });
     },
   },
   created() {

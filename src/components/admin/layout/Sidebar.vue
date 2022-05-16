@@ -174,11 +174,11 @@
               alt="User Image"
             />
           </div>
-          <div class="info">
+          <div class="avtar_image_name">
             <router-link
               :to="{ name: 'admin.employee.employee-list' }"
               class="d-block"
-              >Alexander Pierce</router-link
+              >Vue Store</router-link
             >
           </div>
         </div>
@@ -263,6 +263,19 @@
                     <p>Manufacturers</p>
                   </router-link>
                 </li>
+                <li class="nav-item">
+                  <router-link
+                    class="nav-link"
+                    :class="{
+                      active: openMainMenu('/admin/catalog/product-option'),
+                    }"
+                    :to="{ name: 'admin.catalog.product-option' }"
+                    exact
+                  >
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>Options</p>
+                  </router-link>
+                </li>
 
                 <li class="nav-item">
                   <router-link
@@ -334,9 +347,10 @@
 </template>
 
 <script>
+import ChatPopup from "./ChatPopup.vue";
 export default {
   name: "Sidebar",
-  component: {},
+  component: {ChatPopup},
   data() {
     return {
       actionUrl: {
@@ -397,3 +411,8 @@ export default {
   props: ["responseData"],
 };
 </script>
+<style>
+.avtar_image_name{
+  margin: 6px 0px 0px 10px;
+}
+</style>

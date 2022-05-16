@@ -149,6 +149,24 @@ const admin = [
         },
       },
       {
+        path: "option/list",
+        component: () =>
+          import("../components/admin/catalog/option/List"),
+        name: "admin.catalog.product-option",
+        meta: {
+          middleware: [AuthMiddleware],
+        },
+      },
+      {
+        path: "option/create",
+        component: () =>
+          import("../components/admin/catalog/option/Create"),
+        name: "admin.catalog.product-option.create",
+        meta: {
+          middleware: [AuthMiddleware],
+        },
+      },
+      {
         path: "product",
         component: ProductList,
         name: "admin.catalog.product",
